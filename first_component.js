@@ -1,9 +1,12 @@
 class Button extends React.Component {
+  handleClick = () => {
+    this.props.onClickFunction(this.props.incrementValue);
+  };
+
   render() {
     return(
-      {/* The function wrapper method works, but not recommended. Because it creates a new function for every rendered button. */}
       <button
-        onClick={() => this.props.onClickFunction(this.props.incrementValue)}>
+        onClick={this.handleClick}>
         +{this.props.incrementValue}
       </button>
     );
