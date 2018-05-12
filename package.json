@@ -5,6 +5,16 @@
   "repository": "https://github.com/jp-ryuji/pluralsight-reactjs-getting-started",
   "author": "Ryuji Eguchi <jp.ryuji@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint:fix-all": "eslint --fix *.{js, sx} **/*.{js,jsx}"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
