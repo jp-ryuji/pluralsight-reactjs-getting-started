@@ -5,11 +5,9 @@ class Button extends React.Component {
     // this === component instance
 
     // setState is asynchronous, just +1 could bring a race condition.
-    this.setState((prevState) => {
-      return {
-        counter: prevState.counter + 1
-      };
-    })
+    this.setState((prevState) => ({
+      counter: prevState.counter + 1
+    }));
   };
 
   render() {
