@@ -1,7 +1,7 @@
-const Card = (props) => {
+const Card = props => {
   return (
     <div style={{ margin: '1em' }}>
-      <img src="http://placehold.it/75" />
+      <img width="75" src="https://avatars3.githubusercontent.com/u/1908717?v=4" />
       <div style={{ display: 'inline-block', marginLeft: 10 }}>
         <div style={{ fontSize: '1.25em', fontWeight: 'bold' }}>
           Name here ...
@@ -10,6 +10,14 @@ const Card = (props) => {
       </div>
     </div>
   );
-}
+};
 
-ReactDOM.render(<Card />, mountNode);
+const CardList = props => {
+  return (
+    <div>
+      <Card />
+    </div>
+  );
+};
+
+ReactDOM.render(<CardList />, mountNode);
