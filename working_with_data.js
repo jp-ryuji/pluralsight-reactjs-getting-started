@@ -12,16 +12,25 @@ const Card = props => {
   );
 };
 
+let data = [
+  {
+    name: 'Lugi',
+    avatar_url: 'https://avatars3.githubusercontent.com/u/1908717?v=4',
+    company: 'Foo Company'
+  },
+  {
+    name: 'Someone',
+    avatar_url: 'https://avatars3.githubusercontent.com/u/1289409?v=4',
+    company: 'Bar Company'
+  }
+];
+
 const CardList = props => {
   return (
     <div>
-      <Card
-        name='Lugi'
-        avatar_url="https://avatars3.githubusercontent.com/u/1908717?v=4"
-        company="Foo Company"
-      />
+      {props.cards.map(card => <Card {...card} />)}
     </div>
   );
 };
 
-ReactDOM.render(<CardList />, mountNode);
+ReactDOM.render(<CardList cards={data} />, mountNode);
