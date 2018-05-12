@@ -1,0 +1,8 @@
+{
+  "name": "pluralsight-reactjs-getting-started",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jp-ryuji/pluralsight-reactjs-getting-started",
+  "author": "Ryuji Eguchi <jp.ryuji@gmail.com>",
+  "license": "MIT"
+}
