@@ -6,14 +6,7 @@
   "author": "Ryuji Eguchi <jp.ryuji@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "precommit": "lint-staged",
     "lint:fix-all": "eslint --fix *.{js, sx} **/*.{js,jsx}"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -24,8 +17,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.8.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.1.0",
     "prettier": "^1.12.1"
   },
   "dependencies": {
