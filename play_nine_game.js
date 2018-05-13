@@ -173,11 +173,12 @@ class Game extends React.Component {
                   unselectNumber={this.unselectNumber} />
         </div>
         <br />
-        <Numbers selectedNumbers={selectedNumbers}
-                 selectNumber={this.selectNumber}
-                 usedNumbers={usedNumbers} />
-        <br />
-        <DoneFrame doneStatus={doneStatus} />
+        {doneStatus ?
+          <DoneFrame doneStatus={doneStatus} /> :
+          <Numbers selectedNumbers={selectedNumbers}
+                   selectNumber={this.selectNumber}
+                   usedNumbers={usedNumbers} />
+        }
       </div>
     );
   }
