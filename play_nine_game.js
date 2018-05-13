@@ -1,8 +1,7 @@
 const Stars = props => {
-  const numberOfStars = 1 + Math.floor(Math.random() * 9);
   return (
     <div className="col-5">
-      {_.range(numberOfStars).map(i =>
+      {_.range(props.numberOfStars).map(i =>
         <i key={i} className="fa fa-star"></i>
       )}
     </div>
@@ -56,19 +55,22 @@ class Game extends React.Component {
   state = {
     // NOTE: Normally an object should be used because of the fast look up, but an array is ok for a small data structure.
     selectedNumbers: [],
+    randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
   };
   selectNumber = (clickedNumber) => {
+    if (this.state.selectedNumbers.indexOf(clickedNumber) >= 0) { return; }
     this.setState(prevState => ({
       selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
     }));
   };
+
   render() {
     return (
       <div className="container">
         <h3>Play Nine</h3>
         <hr />
         <div className="row">
-          <Stars />
+          <Stars numberOfStars={this.state.randomNumberOfStars} />
           <Button />
           <Answer selectedNumbers={this.state.selectedNumbers} />
         </div>
