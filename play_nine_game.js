@@ -66,3 +66,33 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, mountNode);
+
+
+// The following css is added on https://jscomplete.com/repl/
+//
+// .fa-star {
+//   margin: 0.5em;
+//   font-size: 24px;
+// }
+
+// span {
+//   display: inline-block;
+//   margin: 0.5em;
+//   text-align: center;
+//   background-color: #ccc;
+//   width: 24px;
+//   border-radius: 50%;
+//   cursor: pointer;
+// }
+
+// .selected {
+//   background-color: #eee;
+//   color: #ddd;
+//   cursor: not-allowd;
+// }
+
+// .used {
+//   background-color: #aaddaa;
+//   color: #99bb99;
+//   cursor: not-allowed;
+// }
