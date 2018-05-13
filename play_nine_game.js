@@ -13,7 +13,7 @@ const Button = props => {
   switch(props.answerIsCorrect) {
     case true:
       button =
-        <button className="btn btn-success">
+        <button className="btn btn-success" onClick={props.acceptAnswer}>
           <i className="fa fa-check"></i>
         </button>;
       break;
@@ -86,7 +86,7 @@ class Game extends React.Component {
     // NOTE: Normally an object should be used because of the fast look up, but an array is ok for a small data structure.
     selectedNumbers: [],
     randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
-    usedNumbers: [4, 7],
+    usedNumbers: [],
     answerIsCorrect: null
   };
 
@@ -112,7 +112,12 @@ class Game extends React.Component {
   };
 
   acceptAnswer = () => {
-    // ..
+    this.setState(prevState => ({
+      usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
+      selectedNumbers: [],
+      answerIsCorrect: null,
+      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
+    }));
   };
 
   render() {
@@ -131,6 +136,7 @@ class Game extends React.Component {
           <Stars numberOfStars={randomNumberOfStars} />
           <Button selectedNumbers={selectedNumbers}
                   checkAnswer={this.checkAnswer}
+                  acceptAnswer={this.acceptAnswer}
                   answerIsCorrect={answerIsCorrect} />
           <Answer selectedNumbers={selectedNumbers}
                   unselectNumber={this.unselectNumber} />
