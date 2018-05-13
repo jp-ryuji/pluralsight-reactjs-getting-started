@@ -1,13 +1,15 @@
 const Stars = props => {
   const numberOfStars = 1 + Math.floor(Math.random() * 9);
-  let stars = [];
-  for (let i = 0; i < numberOfStars; i++) {
-    stars.push(<i key={i} className="fa fa-star"></i>)
-  }
+  // let stars = [];
+  // for (let i = 0; i < numberOfStars; i++) {
+  //   stars.push(<i key={i} className="fa fa-star"></i>)
+  // }
 
   return (
     <div className="col-5">
-      {stars}
+      {_.range(numberOfStars).map(i =>
+        <i key={i} className="fa fa-star"></i>
+      )}
     </div>
   )
 };
@@ -29,12 +31,17 @@ const Answer = props => {
 };
 
 const Numbers = props => {
+  // range with ES6. Not beautiful. So better to use lodash.
+  // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+  // const arrayOfNumbers = Array.from({ length: 9 }, (_, k) => k + 1);
+  const arrayOfNumbers = _.range(1, 10);
+
   return (
     <div className="card text-center">
       <div>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
+        {arrayOfNumbers.map((number, i) =>
+          <span key={i}>{number}</span>
+        )}
       </div>
     </div>
   );
