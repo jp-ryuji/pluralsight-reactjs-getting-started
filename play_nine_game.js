@@ -54,6 +54,10 @@ const Answer = props => {
 
 const Numbers = props => {
   const numberClassName = number => {
+    if (props.usedNumbers.indexOf(number) >= 0) {
+      return 'used';
+    }
+
     if (props.selectedNumbers.indexOf(number) >= 0) {
       return 'selected';
     }
@@ -82,7 +86,8 @@ class Game extends React.Component {
     // NOTE: Normally an object should be used because of the fast look up, but an array is ok for a small data structure.
     selectedNumbers: [],
     randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
-    answerIsCorrect: null,
+    usedNumbers: [4, 7],
+    answerIsCorrect: null
   };
 
   selectNumber = (clickedNumber) => {
@@ -106,11 +111,16 @@ class Game extends React.Component {
     }));
   };
 
+  acceptAnswer = () => {
+    // ..
+  };
+
   render() {
     const {
       selectedNumbers,
       randomNumberOfStars,
-      answerIsCorrect
+      answerIsCorrect,
+      usedNumbers
     } = this.state;
 
     return (
@@ -127,7 +137,8 @@ class Game extends React.Component {
         </div>
         <br />
         <Numbers selectedNumbers={selectedNumbers}
-                 selectNumber={this.selectNumber} />
+                 selectNumber={this.selectNumber}
+                 usedNumbers={usedNumbers} />
       </div>
     );
   }
@@ -166,7 +177,7 @@ ReactDOM.render(<App />, mountNode);
 // .selected {
 //   background-color: #eee;
 //   color: #ddd;
-//   cursor: not-allowd;
+//   cursor: not-allowed;
 // }
 
 // .used {
