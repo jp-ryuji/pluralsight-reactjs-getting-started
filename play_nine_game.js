@@ -20,17 +20,25 @@ const Button = props => {
 const Answer = props => {
   return (
     <div className="col-5">
-      ...
+      {props.selectedNumbers.map((number, i) =>
+        <span key={i}>{number}</span>
+      )}
     </div>
   )
 };
 
 const Numbers = props => {
+  const numberClassName = number => {
+    if (props.selectedNumbers.indexOf(number) >= 0) {
+      return 'selected';
+    }
+  }
+
   return (
     <div className="card text-center">
       <div>
         {Numbers.list.map((number, i) =>
-          <span key={i}>{number}</span>
+          <span key={i} className={numberClassName(number)}>{number}</span>
         )}
       </div>
     </div>
@@ -42,6 +50,10 @@ const Numbers = props => {
 Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
+  state = {
+    // NOTE: Normally an object should be used because of the fast look up, but an array is ok for a small data structure.
+    selectedNumbers: [2, 4],
+  };
   render() {
     return (
       <div className="container">
@@ -50,10 +62,10 @@ class Game extends React.Component {
         <div className="row">
           <Stars />
           <Button />
-          <Answer />
+          <Answer selectedNumbers={this.state.selectedNumbers} />
         </div>
         <br />
-        <Numbers />
+        <Numbers selectedNumbers={this.state.selectedNumbers} />
       </div>
     );
   }
