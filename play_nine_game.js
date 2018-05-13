@@ -31,21 +31,20 @@ const Answer = props => {
 };
 
 const Numbers = props => {
-  // range with ES6. Not beautiful. So better to use lodash.
-  // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/from
-  // const arrayOfNumbers = Array.from({ length: 9 }, (_, k) => k + 1);
-  const arrayOfNumbers = _.range(1, 10);
-
   return (
     <div className="card text-center">
       <div>
-        {arrayOfNumbers.map((number, i) =>
+        {Numbers.list.map((number, i) =>
           <span key={i}>{number}</span>
         )}
       </div>
     </div>
   );
 }
+
+// NOTE: Refactor as follows because the variable is shared exactly as is with all instances of the component.
+//   And it's not related to the logic inside the component.
+Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
   render() {
