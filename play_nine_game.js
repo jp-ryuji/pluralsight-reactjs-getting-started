@@ -87,10 +87,12 @@ const Numbers = props => {
 Numbers.list = _.range(1, 10);
 
 class Game extends React.Component {
+  static randomNumber = () => 1 + Math.floor(Math.random() * 9);
+
   state = {
     // NOTE: Normally an object should be used because of the fast look up, but an array is ok for a small data structure.
     selectedNumbers: [],
-    randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+    randomNumberOfStars: Game.randomNumber(),
     usedNumbers: [],
     answerIsCorrect: null,
     redraws: 5
@@ -122,14 +124,14 @@ class Game extends React.Component {
       usedNumbers: prevState.usedNumbers.concat(prevState.selectedNumbers),
       selectedNumbers: [],
       answerIsCorrect: null,
-      randomNumberOfStars: 1 + Math.floor(Math.random() * 9)
+      randomNumberOfStars: Game.randomNumber()
     }));
   };
 
   redraw = () => {
     if (this.state.redraws === 0) { return; }
     this.setState(prevState => ({
-      randomNumberOfStars: 1 + Math.floor(Math.random() * 9),
+      randomNumberOfStars: Game.randomNumber(),
       selectedNumbers: [],
       answerIsCorrect: null,
       redraws: prevState.redraws - 1
